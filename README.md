@@ -35,11 +35,15 @@ Optional, additional integration:
 You can run the Kafdrop JAR directly, via Docker, or in Kubernetes.
 
 ## Running from JAR
+need to do a maven clean package and cd in to the root directory; replace the *.jar file name with the latest build
+mvn clean package
+
 ```sh
 java --add-opens=java.base/sun.nio.ch=ALL-UNNAMED \
     -jar target/kafdrop-<version>.jar \
     --kafka.brokerConnect=<host:port,host:port>,...
 ```
+e.g. java -jar ./target/kafdrop-3.29.0-SNAPSHOT.jar --zookeeper.connect=localhost:2181 --kafka.brokers=localhost:9093,localhost:9094,localhost:9095
 
 If unspecified, `kafka.brokerConnect` defaults to `localhost:9092`.
 
